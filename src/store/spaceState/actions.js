@@ -10,7 +10,7 @@ export function loading() {
 
 export async function fetchSpaces(dispatch, getState) {
   try {
-    const response = await axios.get(`${apiUrl}/`);
+    const response = await axios.get(`${apiUrl}/spaces`);
     dispatch({ type: "spaces/set_spaces", payload: response.data });
   } catch (error) {
     console.error(error.message);
