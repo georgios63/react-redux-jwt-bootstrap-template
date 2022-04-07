@@ -1,0 +1,26 @@
+.storiesContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  margin: 20px;
+}
+
+.stories {
+  border-style: solid;
+  border-width: 2px;
+  padding: 20px;
+  margin: 20px;
+  width: 50%;
+  align-self: center;
+  font-family: "Snell Roundhand", cursive;
+}
+
+.stories > img {
+  border-style: solid;
+  width: 100%;
+}
+
+.storiesContainer > h1 {
+  align-self: center;
+}

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allSpaces, spaceLoading } from "../../store/spaceState/selectors";
 import { Link } from "react-router-dom";
+import "./styles.css";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,12 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="spacesContainer">
       <h1>Spaces</h1>
       {!loading
         ? spaces.map((space) => (
             <div
+              className="spaces"
               key={space.id}
               style={{
                 color: space.color,

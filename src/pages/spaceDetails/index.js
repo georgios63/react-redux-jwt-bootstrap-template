@@ -1,20 +1,33 @@
-import { fetchSpaces } from "../../store/spaceState/actions";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allSpaces, spaceLoading } from "../../store/spaceState/selectors";
 import { fetchStories } from "../../store/storiesState/actions";
 import { useParams } from "react-router-dom";
+import { allStories, storiesLoading } from "../../store/storiesState/selectors";
+import "./styles.css";
 
 const SpaceDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const loading = useSelector(spaceLoading);
-  const spaces = useSelector(allSpaces);
+  const loading = useSelector(storiesLoading);
+  const stories = useSelector(allStories);
 
   useEffect(() => {
     dispatch(fetchStories(id));
   }, [dispatch, id]);
-  return <div></div>;
+  return (
+    <div className="storiesContainer">
+      <h1>Space Details</h1>
+      {!loading
+        ? stories.map((story) => (
+            <div className="stories" key={story.id}>
+              <p>{story.name}</p>
+              <p>{story.content}</p>
+              <img src={story.imageUrl} alt="img" />
+            </div>
+          ))
+        : "loading"}
+    </div>
+  );
 };
 
 export default SpaceDetails;
