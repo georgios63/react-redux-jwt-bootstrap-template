@@ -4,6 +4,7 @@ import { fetchStories } from "../../store/storiesState/actions";
 import { useParams } from "react-router-dom";
 import { allStories, storiesLoading } from "../../store/storiesState/selectors";
 import "./styles.css";
+import spaces from "../../store/spaceState/reducer";
 
 const SpaceDetails = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,14 @@ const SpaceDetails = () => {
       <h1>Space Details</h1>
       {!loading
         ? stories.map((story) => (
-            <div className="stories" key={story.id}>
+            <div
+              className="stories"
+              key={story.id}
+              style={{
+                color: story.space.color,
+                backgroundColor: story.space.backgroundColor,
+              }}
+            >
               <p>{story.name}</p>
               <p>{story.content}</p>
               <img src={story.imageUrl} alt="img" />
