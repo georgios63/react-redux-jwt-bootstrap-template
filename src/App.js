@@ -13,6 +13,7 @@ import SpaceDetails from "./pages/spaceDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import MySpace from "./pages/mySpace";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/details/:id" element={<SpaceDetails />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/my_space" element={<MySpace />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>

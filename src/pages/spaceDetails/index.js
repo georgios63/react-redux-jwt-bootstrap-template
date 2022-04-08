@@ -4,7 +4,6 @@ import { fetchStories } from "../../store/storiesState/actions";
 import { useParams } from "react-router-dom";
 import { allStories, storiesLoading } from "../../store/storiesState/selectors";
 import "./styles.css";
-import spaces from "../../store/spaceState/reducer";
 
 const SpaceDetails = () => {
   const dispatch = useDispatch();
