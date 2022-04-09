@@ -1,6 +1,7 @@
 const initialState = {
   loading: false,
   spaces: [],
+  details: null,
 };
 
 export default function spaces(state = initialState, action) {

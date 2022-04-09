@@ -11,7 +11,6 @@ const HomePage = () => {
   const loading = useSelector(spaceLoading);
   const spaces = useSelector(allSpaces);
 
-  // console.log(spaces);
   useEffect(() => {
     dispatch(fetchSpaces);
   }, [dispatch]);

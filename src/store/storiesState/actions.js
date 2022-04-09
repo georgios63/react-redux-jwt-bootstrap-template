@@ -10,7 +10,6 @@ export function loading() {
 export const fetchStories = (id) => async (dispatch, getState) => {
   try {
     const response = await axios.get(`${apiUrl}/spaces/stories/${id}`);
-    console.log(response.data);
 
     dispatch({ type: "stories/set_stories", payload: response.data });
   } catch (error) {
