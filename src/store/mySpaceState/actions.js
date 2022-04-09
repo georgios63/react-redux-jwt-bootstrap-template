@@ -48,9 +48,33 @@ export const createStory =
       }
     );
 
-    console.log(response.data);
-    // console.log("response", response);
     dispatch({ type: "spaces/create_story", payload: response.data });
+    dispatch(fetchSpaceById());
+  };
+
+export const updateSpace =
+  ({ title, description, backgroundColor, color, id }) =>
+  async (dispatch, getState) => {
+    const state = getState();
+    const token = state.user.token;
+
+    const response = await axios.put(
+      `${apiUrl}/spaces/mySpace`,
+      {
+        title,
+        description,
+        backgroundColor,
+        color,
+        id,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({ type: "spaces/update_space", payload: response.data });
     dispatch(fetchSpaceById());
   };
 

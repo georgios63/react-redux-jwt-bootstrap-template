@@ -21,6 +21,14 @@ export default function spacesById(state = initialState, action) {
       };
     }
 
+    case "spaces/update_space": {
+      return {
+        ...state,
+        loading: true,
+        spacesById: action.payload,
+      };
+    }
+
     case "spaces/delete_story": {
       return {
         ...state,

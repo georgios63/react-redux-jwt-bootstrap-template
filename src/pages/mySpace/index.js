@@ -4,6 +4,7 @@ import {
   fetchSpaceById,
   deleteStory,
   createStory,
+  updateSpace,
 } from "../../store/mySpaceState/actions";
 import { spaceById, spacesLoading } from "../../store/mySpaceState/selectors";
 import { selectUser } from "../../store/user/selectors";
@@ -26,6 +27,14 @@ const MySpace = () => {
     spaceId: null,
   });
 
+  const [editedSpace, setEditedSpace] = useState({
+    title: "",
+    description: "",
+    backgroundColor: "",
+    color: "",
+    id: null,
+  });
+
   const handleSubmit = (e) => {
     form.spaceId = spacesById.id;
 
@@ -35,6 +44,21 @@ const MySpace = () => {
         content: form.content,
         imageUrl: form.imageUrl,
         spaceId: form.spaceId,
+      })
+    );
+  };
+
+  const editSpace = (e) => {
+    editedSpace.id = spacesById.userId;
+
+    console.log(editedSpace);
+    dispatch(
+      updateSpace({
+        title: editedSpace.title,
+        description: editedSpace.description,
+        backgroundColor: editedSpace.backgroundColor,
+        color: editedSpace.color,
+        id: editedSpace.id,
       })
     );
   };
@@ -66,45 +90,93 @@ const MySpace = () => {
               </button>
             </div>
           ))}
+
           <Popup trigger={<button>Post a cool story bro!</button>}>
             <form onSubmit={handleSubmit}>
-              <label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  size="30"
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                />
-              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                size="30"
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+              />
               <br />
-              <label>
-                <textarea
-                  className="text-area"
-                  name="story"
-                  placeholder="Put your wonderfull story here!"
-                  rows="5"
-                  cols="33"
-                  onChange={(e) =>
-                    setForm({ ...form, content: e.target.value })
-                  }
-                />
-              </label>
+              <textarea
+                className="text-area"
+                name="story"
+                placeholder="Put your wonderfull story here!"
+                rows="5"
+                cols="33"
+                onChange={(e) => setForm({ ...form, content: e.target.value })}
+              />
               <br />
-              <label>
-                <input
-                  type="url"
-                  name="imageUrl"
-                  placeholder="https://example.com"
-                  pattern="https://.*"
-                  size="30"
-                  onChange={(e) =>
-                    setForm({ ...form, imageUrl: e.target.value })
-                  }
-                />
-              </label>
+              <input
+                type="url"
+                name="imageUrl"
+                placeholder="https://example.com"
+                pattern="https://.*"
+                size="30"
+                onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
+              />
               <br />
               <Button id="submit-btn" type="submit" style={{ margin: "10px" }}>
+                Submit
+              </Button>
+            </form>
+          </Popup>
+
+          <Popup trigger={<button>Edit my space</button>}>
+            <form className="edit-space-form" onSubmit={editSpace}>
+              <input
+                type="text"
+                name="title"
+                placeholder="Your title"
+                size="30"
+                onChange={(e) =>
+                  setEditedSpace({ ...editedSpace, title: e.target.value })
+                }
+              />
+              <br />
+              <input
+                type="text"
+                name="description"
+                placeholder="Your description"
+                size="30"
+                onChange={(e) =>
+                  setEditedSpace({
+                    ...editedSpace,
+                    description: e.target.value,
+                  })
+                }
+              />
+              <br />
+              <input
+                type="text"
+                name="backgroundColor"
+                placeholder="Your background color"
+                size="30"
+                onChange={(e) =>
+                  setEditedSpace({
+                    ...editedSpace,
+                    backgroundColor: e.target.value,
+                  })
+                }
+              />
+              <br />
+              <input
+                type="text"
+                name="color"
+                placeholder="Your color"
+                size="30"
+                onChange={(e) =>
+                  setEditedSpace({
+                    ...editedSpace,
+                    color: e.target.value,
+                  })
+                }
+              />
+              <br />
+              <Button id="submit-btn2" type="submit" style={{ margin: "10px" }}>
                 Submit
               </Button>
             </form>
