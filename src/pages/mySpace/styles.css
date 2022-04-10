@@ -7,11 +7,24 @@
 }
 
 .space_story_container {
-  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+  padding: 40px;
   margin: 20px;
   width: 50%;
   align-self: center;
   font-family: "Snell Roundhand", cursive;
+}
+
+.mySpace_stories {
+  border-style: solid;
+  margin-top: 20px;
+}
+
+img {
+  border-style: solid;
+  width: 90%;
 }
 
 .text-area {
@@ -21,4 +34,14 @@
 
 .edit-space-form > input {
   margin: 5px;
+}
+
+.edit_form_button {
+  margin: 5px;
+  padding: 5px;
+}
+
+.delete_button {
+  margin: 5px;
+  padding: 5px;
 }

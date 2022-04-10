@@ -81,17 +81,24 @@ const MySpace = () => {
           <h1>{spacesById.title}</h1>
           <h1>{spacesById.description}</h1>
           {spacesById.stories.map((story) => (
-            <div key={story.id}>
+            <div className="mySpace_stories" key={story.id}>
               <p>{story.name}</p>
               <p>{story.content}</p>
               <img src={story.imageUrl} alt="img" />
-              <button onClick={() => dispatch(deleteStory(story.id))}>
+              <Button
+                className="delete_button"
+                onClick={() => dispatch(deleteStory(story.id))}
+              >
                 Delete Story
-              </button>
+              </Button>
             </div>
           ))}
 
-          <Popup trigger={<button>Post a cool story bro!</button>}>
+          <Popup
+            trigger={
+              <Button className="post_form">Post a cool story bro!</Button>
+            }
+          >
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -125,7 +132,11 @@ const MySpace = () => {
             </form>
           </Popup>
 
-          <Popup trigger={<button>Edit my space</button>}>
+          <Popup
+            trigger={
+              <Button className="edit_form_button">Edit my space</Button>
+            }
+          >
             <form className="edit-space-form" onSubmit={editSpace}>
               <input
                 type="text"
